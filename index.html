@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textile Planning Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Textile Planning Calculator</h1>
+      <p class="intro">
+        Plan fabric production, yarn requirements, and machine utilization in one place.
+      </p>
+
+      <section class="card">
+        <h2>Fabric Order Inputs</h2>
+        <div class="grid">
+          <label>
+            Order Quantity (meters)
+            <input id="orderQty" type="number" min="0" step="0.01" value="10000" />
+          </label>
+          <label>
+            Fabric Width (inches)
+            <input id="fabricWidth" type="number" min="1" step="0.1" value="58" />
+          </label>
+          <label>
+            GSM (grams / m²)
+            <input id="gsm" type="number" min="1" step="0.1" value="180" />
+          </label>
+          <label>
+            Warp Count (Ne)
+            <input id="warpCount" type="number" min="1" step="0.1" value="30" />
+          </label>
+          <label>
+            Weft Count (Ne)
+            <input id="weftCount" type="number" min="1" step="0.1" value="24" />
+          </label>
+          <label>
+            Loom Speed (picks/min)
+            <input id="loomSpeed" type="number" min="1" step="1" value="550" />
+          </label>
+          <label>
+            Pick Density (PPI)
+            <input id="ppi" type="number" min="1" step="0.1" value="68" />
+          </label>
+          <label>
+            Number of Looms
+            <input id="loomCount" type="number" min="1" step="1" value="24" />
+          </label>
+          <label>
+            Efficiency (%)
+            <input id="efficiency" type="number" min="1" max="100" step="0.1" value="85" />
+          </label>
+          <label>
+            Waste Allowance (%)
+            <input id="waste" type="number" min="0" max="100" step="0.1" value="5" />
+          </label>
+          <label>
+            Working Hours / Day
+            <input id="hoursPerDay" type="number" min="1" max="24" step="0.5" value="24" />
+          </label>
+        </div>
+        <button id="calculateBtn">Calculate Plan</button>
+      </section>
+
+      <section class="card">
+        <h2>Planning Results</h2>
+        <div id="results" class="results"></div>
+      </section>
+
+      <section class="card small">
+        <h3>How calculations are estimated</h3>
+        <ul>
+          <li>Fabric weight = Area × GSM</li>
+          <li>Yarn split estimated from yarn counts ratio and fabric structure assumptions</li>
+          <li>Loom output estimated from picks/min, PPI, looms, efficiency, and working hours</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
